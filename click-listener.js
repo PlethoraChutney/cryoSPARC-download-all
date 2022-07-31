@@ -1,15 +1,18 @@
 function findMaps(tab) {
-    browser.tabs.executeScript({file: 'map-downloader.js'});
+    chrome.scripting.executeScript({
+        target: {tabId: tab.id},
+        files: ['map-downloader.js']
+    });
 }
 
-browser.browserAction.onClicked.addListener(findMaps);
+chrome.action.onClicked.addListener(findMaps);
 
 function downloadMap(map) {
-    browser.downloads.download({
+    chrome.downloads.download({
         url: map.url,
         filename: map.filename
     })
 }
 
-browser.runtime.onMessage.addListener(downloadMap);
+chrome.runtime.onMessage.addListener(downloadMap);
 

@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "cryoSPARC Download All",
     "version": "0.1",
 
@@ -14,16 +14,16 @@
 
     "permissions": [
         "activeTab",
-        "downloads"
+        "downloads",
+        "scripting"
     ],
 
-    "browser_action": {
+    "action": {
         "default_icon": "icons/map-32.png",
         "default_title": "Download Maps"
     },
 
     "background": {
-        "scripts": ["click-listener.js"],
-        "persistent": false
+        "service_worker": "click-listener.js"
     }
 }

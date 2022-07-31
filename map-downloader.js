@@ -6,7 +6,7 @@ function sendDownloads() {
     for (let boxName of allNames) {
         if (boxName.innerText.includes('volume')) {
             let mapLocation = downloadUrl + boxName.innerText + '.map';
-            browser.runtime.sendMessage({
+            chrome.runtime.sendMessage({
                 'url': mapLocation,
                 'filename': `${urlComponents[4]}-${urlComponents[6]}-${boxName.innerText}.mrc`
             });
